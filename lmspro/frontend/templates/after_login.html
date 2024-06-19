@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/mdb-ui-kit@3.4.0/dist/js/mdb.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Psoppins%26display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/static/css/user_profile.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/css-doodle/0.37.4/css-doodle.min.js"></script>
+
+</head>
+<body>
+<!-- Page after login for admin or superuser -->
+
+<nav>
+    <div class="logo">
+        <a class="navbar-brand" href="#"><img src="/frontend/static/img/VVIT_logo.svg" alt="logo" class="logo w-25"/></a>
+    </div>
+    <ul class="nav-links">
+       <li><a href="{% url "logout" %}">Log Out</a></li>
+    </ul>
+    <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+</nav>
+
+
+
+<!-- Student Profile -->
+<div class="student-profile ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent text-center">
+                        <img class="profile_img" src="https://placeimg.com/640/480/arch/any" alt="">
+                        <h3 id="stuName">{{user.name}}</h3>
+                    </div>
+                    <div class="card-body">
+                        <h3><strong class="pr-1">Roll No:</strong> <span class="mb-0" id="sName">{{ user.rollnumber }}</span></h3>
+                        <h3><strong class="pr-1">Gender:</strong> <span class="mb-0" id="sName">{{ user.gender }}</span></h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 mt-2">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent border-0">
+                        <h3 class="mb-0">General Information</h3>
+
+                    </div>
+                    <div class="card-body pt-0">
+                        <table class="table table-bordered">
+                            <tr>
+                            <!-- <tr>
+                                <th >Name</th>
+                                <td >:</td>
+                            <td><label>
+                                <input type="text" id="enterName" >
+                            </label></td>
+                            </tr>
+                                <th >Roll Number </th>
+                                <td >:</td>
+                            <td><label>
+                                <input type="text" id="rollNo">
+                            </label></td> -->
+                            <tr>
+                                <th>Student ID</th>
+                                <td>:</td>
+                                <td><label>
+                                    <input type="text" id="studentId" value="{{user.libraryid}}" {% if user.libraryid %} disabled {% endif %}>
+                                </label></td>
+                            </tr>
+                            <tr>
+                                <th>Student Branch</th>
+                                <td>:</td>
+                                <td><label>
+                                    <input type="text" id="newBranch"value="{{user.branch}}" {% if user.branch %} disabled {% endif %}>
+                                </label></td>
+                            </tr>
+                            <tr>
+                                <th>Student Section</th>
+                                <td>:</td>
+                                <td><label>
+                                    <input type="text" id="nameDisplay" value="{{user.section}}" {% if user.section %} disabled {% endif %}>
+                                </label></td>
+                                <tr>
+                                    <th >Academic Year	</th>
+                                    <td >:</td>
+                                    <td><label>
+                                        <input type="number" value="{{user.libraryid}}" {% if user.libraryid %} disabled {% endif %}>
+                                    </label></td>
+                                </tr>
+                            <tr>
+                                <th>Remarks</th>
+                                <td>:</td>
+                                <td><label>
+                                    <textarea name="opinion" placeholder="Mention your Remarks"></textarea>
+                                </label></td>
+                            </tr>
+                            <tr>
+                                <th>Issues</th>
+                                <td>:</td>
+                                <td><label>
+                                    <textarea name="opinion" placeholder="Mention your Issues"></textarea>
+                                </label></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div id="remarksButtonContainer" class="d-none flex-row justify-content-center mb-4" >
+                     <button class="btn"  onclick="remarksButton()">Send Remarks</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card1 shadow-lg mt-3">
+    <h5> STUDENTS BOOK DETAILS</h5>
+<div>
+    <table  class="table1">
+        <tr>
+            <th>Book Name</th>
+            <th>Book ID</th>
+            <th>Issue Date</th>
+            <th>Return Date</th>
+            <th>Renewal Date</th>
+            <th>Serial No</th>
+        </tr>
+        <tr>{% for book in book_stu %}
+            <td>{{ book.book.TitleName }}</td>
+            <td>{{ book.book.AccessionNumber }}</td>
+            <td>{{ book.lending_time|date:"d-m-Y" }}</td>
+            <td>20-1-2024</td>
+            <td>none</td>
+            <td>Serial No</td>
+            {% endfor %}
+        </tr>
+
+    </table>
+</div>
+</div>
+
+
+
+</body>
+<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+
+<script>
+    let opinionInputs = document.getElementsByName("opinion");
+    console.log(opinionInputs);
+    console.log("hi");
+    let remarksButtonContainer=document.getElementById("remarksButtonContainer");
+    opinionInputs.forEach(function(input){ input.addEventListener('input',function(event){
+        remarksButtonContainer.classList.remove("d-none");
+        remarksButtonContainer.classList.add("d-flex");
+    });
+});
+    function navSlide() {
+        const burger = document.querySelector(".burger");
+        const nav = document.querySelector(".nav-links");
+        const navLinks = document.querySelectorAll(".nav-links li");
+
+        burger.addEventListener("click", () => {
+            //Toggle Nav
+            nav.classList.toggle("nav-active");
+
+            //Animate Links
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = ""
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+                }
+            });
+            //Burger Animation
+            burger.classList.toggle("toggle");
+        });
+
+    }
+
+    navSlide();
+    function saveButton() {
+        let nameStu = document.getElementById("enterName").value;
+        let rollNo = document.getElementById("rollNo").value;
+        let bClass = document.getElementById("newBranch").value;
+        let nameDisplay = document.getElementById("nameDisplay").value;
+        let studentId = document.getElementById("studentId").value;
+
+        document.getElementById("stuName").innerHTML = nameStu;
+        document.getElementById("sName").innerHTML = studentId;
+        document.getElementById("sClass").innerHTML = bClass;
+        document.getElementById("sSection").innerHTML = nameDisplay;
+
+    }
+
+</script>
+</html>

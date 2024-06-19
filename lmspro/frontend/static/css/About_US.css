@@ -1,0 +1,26 @@
+.logo{
+    height: 50px;
+}
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+li{
+    font-family: "Rockwell Extra Bold", Rockwell, serif;";
+}
+th,
+td {
+    padding: 10px;
+    text-wrap: normal;
+    font-family: "Times New Roman", Times, serif;
+}
+table{
+    width: 100%;
+    table-layout: fixed;
+}
+th {
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+}

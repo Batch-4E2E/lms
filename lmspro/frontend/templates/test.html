@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+    <form action="" method ="post" id="submitform">
+        {% csrf_token %}
+    <div class="floatingform">
+    <input type="password" class="form-control input_class" id="floatingPassword1" name="passw1" placeholder="Password">
+    <label for="floatingPassword">New Password</label>
+    <input type="password" class="form-control input_class" id="floatingPassword2" placeholder="Password">
+    <label for="floatingPassword">Confirm Password</label>
+    <button class = "submit" id= "submitbutton" onclick="validate()">Submit</button>
+</div>
+</form> 
+
+<script>
+function validate(){
+    const pass1 = document.getElementById("floatingPassword1");
+    const pass2 = document.getElementById("floatingPassword2");
+    const submitform = document.getElementById("submitform");
+    submitform.addEventListener('submit',function(response){
+        response.preventDefault();
+        if (pass1.value==pass2.value){
+            alert("inside");
+
+        }
+        else{
+            alert("inelse");
+            pass1.value=pass2.value="";
+        }
+})
+}
+</script>
+</body>
+</html>

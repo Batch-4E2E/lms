@@ -1,0 +1,93 @@
+.login_details{
+    background-color: #c5c5c5;
+    width: 100%;
+    text-align: right;
+}
+
+h5{
+    padding-right: 20px;
+    color:#ffffff;
+}
+
+
+.card{
+    background-color: aliceblue;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3.5px );
+    -webkit-backdrop-filter: blur( 3.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+button{
+    border-radius: 50%;
+    width:80px;
+    margin-left:30px;
+
+}
+.illustration{
+    margin-right: 20%;
+}
+li{
+    background-color: #ffffff;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.search-icon {
+    font-size: 24px; /* Adjust the font size as needed */
+    color: #666; /* Adjust icon color */
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 5px;
+}
+input{
+    background-color: aliceblue ;
+}
+input:focus{
+    outline-color:  #c5c5c5;
+}
+input{
+    width: 190vh;
+    height: 50px;
+    border-radius: 50px;
+    border-color: transparent;
+    background-color: aliceblue;
+}
+.search-container{
+    background-color: aliceblue;
+   border-radius: 50px;
+}
+.search-container:focus{
+    outline-color: aliceblue;
+}
+body{
+    background-image:url("back2.svg");
+    background-size: 225vh;
+    background-repeat: no-repeat;
+
+}
+
+input{
+    background-color: aliceblue;
+
+}
+.color1{
+    background-color:#E87A6E;
+    outline-color:  #dc3545;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
